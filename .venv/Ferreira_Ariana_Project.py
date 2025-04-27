@@ -78,9 +78,17 @@ def add_new_lego_set(lego_data):
     price = read_float("Enter the price (0.00 for retired sets): ",0.0, 500.0)
     stock_status = read_valid_option("Enter stock status (1 for in stock, o for out of stock): ", ['0', '1'])
 
+ # Add the new Lego Set to the lego_data list
+    new_lego_set = {
+        'set_number' : new_set_number,
+        'title' : title,
+        'pieces' : pieces,
+        'price': price,
+        'stock_status': int(stock_status),
+    }
+    lego_data.append(new_lego_set)
 
-
-
+    print(f"Sucessfull added new LEGO set: {new_set_number} - {title}")
 
 
 
