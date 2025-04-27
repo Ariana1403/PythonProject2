@@ -2,9 +2,8 @@
 #Project :  Lego Inventory System
 #Description : This program manages LEGO sets in a inventory System
 
-#Import the validation function
-from validation import read_lego_code
-
+#Import the validation functions
+from validation import read_lego_code, read_valid_lego_name,read_intenger, read_float, read_valid_option
 
 # Function to Load LEGO data from a file
 
@@ -30,7 +29,7 @@ def load_lego_data(file_name):
         return lego_data
 
     except FileNotFoundError:
-        print(f"Errot: The file{lego_data} was not found")
+        print(f"Errot: The file{file_name} was not found")
         return[]
 
     except Exception as e:
@@ -65,7 +64,8 @@ def display_inventory(lego_data):
 def add_new_lego_set(lego_data):
     print("\nAdd New LEGO Set")
     new_set_number = read_lego_code("Enter the LEGO set number (5-7 digits): ")
-    print(f"New Set Number: {new_set_number}")
+
+    for lego_set in e
 
 lego_data= load_lego_data('lego_data.txt')
 display_inventory(lego_data)
