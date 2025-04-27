@@ -106,6 +106,27 @@ def add_new_lego_set(lego_data, file_name):
 
     save_lego_data(file_name, lego_data)
 
+# Search LEGO sets by prefix
+
+def search_lego_sets_by_prefix(lego_data):
+    print("\nSearch by Code Prefix")
+    prefix = input("Which code are you looking for? ").strip()
+
+    matching_sets = []
+
+    for lego_set in lego_data:
+        if lego_set['set_numer'].startswith(prefix):
+            matching_sets.append((lego_set['set_number'], lego_set['title']))
+
+    if matching_sets:
+        print(f"\nSets whose cide start with {prefix}")
+        print("-" * 60)
+        for set_number, title in matching_sets:
+            print(f"{set_number:<10} {title}")
+    else:
+        print(f"\nNo sets whose code starts with {prefix}")
+
+
 def main_menu(lego_data, file_name):
     while True:
         print("1. Display Inventory")
