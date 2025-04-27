@@ -3,7 +3,7 @@
 #Description : This program manages LEGO sets in a inventory System
 
 #Import the validation functions
-from validation import read_lego_code, read_valid_lego_name,read_intenger, read_float, read_valid_option
+from validation import read_lego_code, read_valid_lego_name,read_integer, read_float, read_valid_option
 
 # Function to Load LEGO data from a file
 
@@ -63,9 +63,31 @@ def display_inventory(lego_data):
 
 def add_new_lego_set(lego_data):
     print("\nAdd New LEGO Set")
+
     new_set_number = read_lego_code("Enter the LEGO set number (5-7 digits): ")
 
-    for lego_set in e
+    for lego_set in lego_data:
+        if lego_set['set_number']  == new_set_number:
+            print(f"Error: LEGO set number {new_set_number} already exist.")
+            return
+
+# Get additional details with validation
+
+    title = read_valid_lego_name("Enter the Lego set title: ")
+    pieces = read_integer("Enter the number of pieces: ", 1, 5000)
+    price = read_float("Enter the price (0.00 for retired sets): ",0.0, 500.0)
+    stock_status = read_valid_option("Enter stock status (1 for in stock, o for out of stock): ", ['0', '1'])
+
+
+
+
+
+
+
+
+
+
+
 
 lego_data= load_lego_data('lego_data.txt')
 display_inventory(lego_data)
