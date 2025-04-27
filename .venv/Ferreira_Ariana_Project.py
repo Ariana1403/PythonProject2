@@ -39,12 +39,14 @@ def load_lego_data(file_name):
 
 def save_lego_data(file_name, lego_data):
     try:
-        with open(file_name, 'w', enconding='utf-8') as file:
+        with open(file_name, 'w', encoding='utf-8') as file:
             for lego_set in lego_data:
-                file.write(f"{lego_set['set_number']},{lego_set['title']},{lego_set['piecces']}, {lego_set['price']}, {lego_set['stock_status']}\n")
-                print("Data saved sucessfully.")
+                file.write(f"{lego_set['set_number']},{lego_set['title']},{lego_set['pieces']},{lego_set['price']},{lego_set['stock_status']}\n")
+        print("Data saved sucessfully.")
+
     except Exception as e:
         print(f"Error saving data: {e}")
+
 
 
 #Function to display inventory
@@ -104,10 +106,35 @@ def add_new_lego_set(lego_data, file_name):
 
     save_lego_data(file_name, lego_data)
 
+def main_menu(lego_data, file_name):
+    while True:
+        print("1. Display Inventory")
+        print("2. Add New LEGO Set \u00AE")
+        print("3. Search by Code Prefix")
+        print("4. Placeholder for week 12 Lab")
+        print("5. Placeholder for week 12 Lab")
+        print("6. Placeholder for week 12 Lab")
+        print("7. Quit")
+
+        option = input("Enter your choice (1-7): ").strip()
+
+        if option == '1':
+            display_inventory(lego_data)
+        elif option == '2':
+            add_new_lego_set(lego_data, file_name_name)
+        elif option == '3':
+            search_lego_sets_by_prefix(lego_data)
+        elif option in ['4', '5', '6']:
+            print("This option is a placeholder for future development")
+        elif option == '7':
+            save_lego_data(file_name, lego_data)
+            break
+        else:
+            print("Invalid option.Please enter a number between 1 and 7.")
 
 
-
-lego_data= load_lego_data('lego_data.txt')
+# Maing program
 file_name = 'lego_data.txt'
-display_inventory(lego_data)
-add_new_lego_set(lego_data, file_name)
+lego_data= load_lego_data('lego_data.txt')
+main_menu(lego_data, file_name)
+
