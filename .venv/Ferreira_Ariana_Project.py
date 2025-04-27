@@ -2,6 +2,10 @@
 #Project :  Lego Inventory System
 #Description : This program manages LEGO sets in a inventory System
 
+#Import the validation function
+from validation import read_lego_code
+
+
 # Function to Load LEGO data from a file
 
 def load_lego_data(file_name):
@@ -56,7 +60,13 @@ def display_inventory(lego_data):
 
         print(f"{set_number:<7} {title:<40}  {pieces:<8} {stock_icon:^5} {price:>8.2f} {retired_market}")
 
+#Function do add a new LEGO  set:
 
+def add_new_lego_set(lego_data):
+    print("\nAdd New LEGO Set")
+    new_set_number = read_lego_code("Enter the LEGO set number (5-7 digits): ")
+    print(f"New Set Number: {new_set_number}")
 
 lego_data= load_lego_data('lego_data.txt')
 display_inventory(lego_data)
+add_new_lego_set(lego_data)
