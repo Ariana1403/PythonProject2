@@ -102,9 +102,7 @@ def add_new_lego_set(lego_data, file_name):
 
     print(f"Sucessfull added new LEGO set: {new_set_number} - {title}")
 
-
-
-
+    save_lego_data(file_name, lego_data)
 
 
 
