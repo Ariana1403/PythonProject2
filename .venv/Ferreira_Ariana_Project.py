@@ -23,6 +23,8 @@ def load_lego_data(file_name):
 
                 lego_data.append(lego_set)
 
+        return lego_data
+
     except FileNotFoundError:
         print(f"Errot: The file{lego_data} was not found")
         return[]
@@ -30,9 +32,31 @@ def load_lego_data(file_name):
     except Exception as e:
         print(f"An unnexpectated error occured {e}")
 
-    return lego_data
+#Function to display inventory
 
-lego_inventory = load_lego_data('lego_data.txt')
+def display_inventory(lego_data):
+    print("\nLego Sets")
+    print("-" * 80)
 
-for lego_set in lego_inventory:
-    print(lego_set)
+    for lego_set in lego_data:
+        set_number = lego_set['set_number']
+        title = lego_set['title']
+        pieces = f"{lego_set['pieces']:,}"
+        price = lego_set['price']
+
+        if lego_set['stock_status'] == 1:
+            stock_icon = '✅'
+        else:
+            stock_icon ='❌'
+
+        retired_market = ""
+
+        if lego_set['price'] == 0.00:
+            retired_market = '#'
+
+        print(f"{set_number:<7} {title:<40}  {pieces:<8} {stock_icon:^5} {price:>8.2f} {retired_market}")
+
+
+
+lego_data= load_lego_data('lego_data.txt')
+display_inventory(lego_data)
