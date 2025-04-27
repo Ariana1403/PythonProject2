@@ -115,7 +115,7 @@ def search_lego_sets_by_prefix(lego_data):
     matching_sets = []
 
     for lego_set in lego_data:
-        if lego_set['set_numer'].startswith(prefix):
+        if lego_set['set_number'].startswith(prefix):
             matching_sets.append((lego_set['set_number'], lego_set['title']))
 
     if matching_sets:
@@ -126,6 +126,7 @@ def search_lego_sets_by_prefix(lego_data):
     else:
         print(f"\nNo sets whose code starts with {prefix}")
 
+#Display the main menu
 
 def main_menu(lego_data, file_name):
     while True:
@@ -137,7 +138,7 @@ def main_menu(lego_data, file_name):
         print("6. Placeholder for week 12 Lab")
         print("7. Quit")
 
-        option = input("Enter your choice (1-7): ").strip()
+        option = input(">>>")
 
         if option == '1':
             display_inventory(lego_data)
@@ -149,9 +150,10 @@ def main_menu(lego_data, file_name):
             print("This option is a placeholder for future development")
         elif option == '7':
             save_lego_data(file_name, lego_data)
+            print("Data saved. Goodbye!")
             break
         else:
-            print("Invalid option.Please enter a number between 1 and 7.")
+            print("Invalid option.Please try again.")
 
 
 # Maing program
