@@ -35,6 +35,18 @@ def load_lego_data(file_name):
     except Exception as e:
         print(f"An unnexpectated error occured {e}")
 
+# Function to save LEGO data to a file
+
+def save_lego_data(file_name, lego_data):
+    try:
+        with open(file_name, 'w', enconding='utf-8') as file:
+            for lego_set in lego_data:
+                file.write(f"{lego_set['set_number']},{lego_set['title']},{lego_set['piecces']}, {lego_set['price']}, {lego_set['stock_status']}\n")
+                print("Data saved sucessfully.")
+    except Exception as e:
+        print(f"Error saving data: {e}")
+
+
 #Function to display inventory
 
 def display_inventory(lego_data):
@@ -61,7 +73,7 @@ def display_inventory(lego_data):
 
 #Function do add a new LEGO  set:
 
-def add_new_lego_set(lego_data):
+def add_new_lego_set(lego_data, file_name):
     print("\nAdd New LEGO Set")
 
     new_set_number = read_lego_code("Enter the LEGO set number (5-7 digits): ")
@@ -98,5 +110,6 @@ def add_new_lego_set(lego_data):
 
 
 lego_data= load_lego_data('lego_data.txt')
+file_name = 'lego_data.txt'
 display_inventory(lego_data)
-add_new_lego_set(lego_data)
+add_new_lego_set(lego_data, file_name)
